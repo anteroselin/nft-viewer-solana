@@ -1,8 +1,11 @@
 import type { NextPage } from 'next'
+import React, { useState } from "react"
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
+  const [ownerKey, setOwnerKey] = useState("");
   return (
     <div className={styles.container}>
       <Head>
@@ -14,10 +17,8 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="">NFT Viewer!</a>
         </h1>
-        <h1 className="text-3xl font-bold underline">
-          Hello world!
-        </h1>
-        <input></input>
+        <input className='w-1/2 mt-4 h-8 p-2 rounded-md border-2 border-black' onChange={e => setOwnerKey(e.target.value)} value={ownerKey} placeholder='search owner public key'></input>
+        <Link href="/view">Search</Link>
       </main>
     </div>
   )
