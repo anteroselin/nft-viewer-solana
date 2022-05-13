@@ -23,7 +23,7 @@ const View: NextPage = () => {
           </button>
         </div>
         <div className='flex mt-16'>
-          <NFTView></NFTView>
+          <NFTView name="key" creator="kanbei"></NFTView>
         </div>
         
       </div>
