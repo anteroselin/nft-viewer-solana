@@ -21,11 +21,21 @@ const View: NextPage = () => {
           <button className="ml-8 bg-gray-400 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
             Last Creation Time
           </button>
+          <button className="float-right ml-8 bg-red-400 hover:bg-red-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+            Clear bookmark
+          </button>
         </div>
-        <div className='flex mt-16'>
-          <NFTView name="key" creator="kanbei"></NFTView>
+        <div className='flex'>
+          <div className='grid grid-cols-3 gap-4 md:grid-cols-5 md:gap-6 mt-16'>
+            <NFTView name="key" creator="kanbei"></NFTView>
+            <NFTView name="key" creator="kanbei"></NFTView>
+            <NFTView name="key" creator="kanbei"></NFTView>
+            <NFTView name="key" creator="kanbei"></NFTView>
+            <NFTView name="key" creator="kanbei"></NFTView>
+            <NFTView name="key" creator="kanbei"></NFTView>
+            <NFTView name="key" creator="kanbei"></NFTView>
+          </div>
         </div>
-        
       </div>
     </div>
   )
