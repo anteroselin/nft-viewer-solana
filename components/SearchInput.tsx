@@ -1,4 +1,3 @@
-import Link from 'next/link'
 
 const SearchInput = ({ onChangeHandler=()=>{}, text="", className="", onClickHandler=()=>{} }) => {
   return (
