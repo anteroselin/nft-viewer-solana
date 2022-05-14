@@ -1,0 +1,1 @@
+export const OWNER_PUBLIC_KEY = "OWNER_PUBLIC_KEY";

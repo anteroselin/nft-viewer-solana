@@ -4,12 +4,21 @@ import { useRouter } from "next/router";
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import SearchInput from '../components/SearchInput'
+import { connect } from "react-redux";
+import { OWNER_PUBLIC_KEY } from '../lib/store/types';
+import { useDispatch } from "react-redux";
 
 const Home: NextPage = () => {
   const [ownerKey, setOwnerKey] = useState("");
+  const dispatch = useDispatch();
+  
   const router = useRouter();
   
   const goView = () => {
+    dispatch({
+      type: OWNER_PUBLIC_KEY,
+      payload: ownerKey
+    })
     router.push("/view");
   }
 

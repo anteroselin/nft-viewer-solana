@@ -2,16 +2,23 @@ import type { NextPage } from 'next'
 import React, { useState } from "react"
 import SearchInput from '../components/SearchInput'
 import NFTView from '../components/NFTView'
+import { connect } from "react-redux";
 import Link from 'next/link'
+import { useDispatch, useSelector } from "react-redux";
 
 const View: NextPage = () => {
   const [ownerKey, setOwnerKey] = useState("");
+  const nfts = useSelector(state => state.nfts);
+
+  const onSearch = () => {
+    console.log(ownerKey);
+  }
 
   return (
     <div className='container p-12'>
       <div className='flex flex-row'>
         <span className='text-4xl mr-10 font-bold'> NFT Viewer </span>
-        <SearchInput className='flex flex-row w-1/2 items-center justify-center' text={ownerKey} onChangeHandler={setOwnerKey}></SearchInput>
+        <SearchInput className='flex flex-row w-1/2 items-center justify-center' text={ownerKey} onClickHandler={onSearch} onChangeHandler={setOwnerKey}></SearchInput>
       </div>
       <div className='p-8'>
         <div className='flex'>
@@ -41,4 +48,4 @@ const View: NextPage = () => {
   )
 }
 
-export default View
+export default View;

@@ -1,12 +1,15 @@
 import '../styles/globals.css'
 import React from "react";
-import { Provider as ReduxProvider } from "react-redux";
 import type { AppProps } from 'next/app'
+import store from '../lib/store';
+import { Provider as ReduxProvider } from "react-redux";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
-      <Component {...pageProps} />
+      <ReduxProvider store={store}>
+        <Component {...pageProps} />
+      </ReduxProvider>
     </React.Fragment>
   )
 }
