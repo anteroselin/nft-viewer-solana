@@ -1,7 +1,6 @@
 import { OWNER_PUBLIC_KEY } from "../types";
 
 const INITIAL_STATE = {
-  totalNfts: [],
   owner_key: "",
 }
 
