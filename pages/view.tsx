@@ -15,13 +15,13 @@ const View: NextPage = () => {
       </div>
       <div className='p-8'>
         <div className='flex'>
-          <button className="bg-gray-400 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+          <button className="bg-gray-400 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border-0 rounded shadow">
             Last Transaction Time
           </button>
-          <button className="ml-8 bg-gray-400 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+          <button className="ml-8 bg-gray-400 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border-0 rounded shadow">
             Last Creation Time
           </button>
-          <button className="float-right ml-8 bg-red-400 hover:bg-red-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+          <button className="ml-auto ml-8 bg-red-500 hover:bg-red-300 text-white font-semibold py-2 px-4 border-0 rounded shadow">
             Clear bookmark
           </button>
         </div>
