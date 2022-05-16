@@ -11,11 +11,10 @@ import { useDispatch } from "react-redux";
 const Home: NextPage = () => {
   const [ownerKey, setOwnerKey] = useState("");
   const dispatch = useDispatch();
-  
   const router = useRouter();
-  
+
   const goView = () => {
-    if ( ownerKey === "" ) {
+    if (ownerKey === "") {
       alert("Please input owner public key");
       return;
     }
@@ -35,7 +34,7 @@ const Home: NextPage = () => {
       </Head>
       <main className={`${styles.main}`}>
         <span className='text-6xl mb-16 font-bold'> NFT Viewer </span>
-        <SearchInput className='flex flex-row w-1/2 items-center justify-center' text={ownerKey} onChangeHandler={setOwnerKey}  onClickHandler={goView}></SearchInput>
+        <SearchInput className='flex flex-row w-1/2 items-center justify-center' text={ownerKey} onChangeHandler={setOwnerKey} onClickHandler={goView}></SearchInput>
       </main>
     </div>
   )

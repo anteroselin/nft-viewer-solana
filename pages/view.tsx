@@ -17,6 +17,12 @@ const View: NextPage = () => {
   const dispatch = useDispatch();
   const nfts = useSelector(state => state.nfts);
 
+  const getLastTransactionTimeFromAddress = async (address: string) => {
+    const url = "https://api-devnet.solscan.io/account/transaction?address=" + address;
+    let data = (await axios.get(url)).data.data;
+    return data[0].blockTime;
+  }
+
   const setNFTData = async (key: string) => {
     const res = await getAllNftData(key);
     let arr = [];
@@ -25,6 +31,7 @@ const View: NextPage = () => {
       val.data.tokenAddress = res[i].mint;
       val.data.status = false;
       val.data.updateAuthority = res[i].updateAuthority;
+      val.data.lastBlockTime = await getLastTransactionTimeFromAddress(res[i].mint);
       arr.push(val.data);
     }
     const url = "https://api-devnet.solscan.io/account/transaction?address=" + key;
@@ -40,14 +47,22 @@ const View: NextPage = () => {
     setTotalNFTs(result_arr);
   }
 
-  const onOrderByCreationTime = async (data: any[]) => {
+  const onOrderByCreationTime = async () => {
     let arr = totalNFTs;
     let result_arr = arr.sort((a: any, b: any) => (a.blockTime > b.blockTime ? 1 : -1));
     result_arr.map((val, key) => {
       val.status = false;
-    })
+    });
     setTotalNFTs(result_arr.slice(0));
+  }
 
+  const onOrderByLastTransactionTime = async () => {
+    let arr = totalNFTs;
+    let result_arr = arr.sort((a: any, b: any) => (a.lastBlockTime > b.lastBlockTime ? 1 : -1));
+    result_arr.map((val, key) => {
+      val.status = false;
+    });
+    setTotalNFTs(result_arr.slice(0));
   }
 
   const onSearch = async () => {
@@ -56,7 +71,7 @@ const View: NextPage = () => {
       return;
     }
     setLoading(true);
-    setNFTData(ownerKey);
+    await setNFTData(ownerKey);
     setLoading(false);
   }
 
@@ -64,7 +79,7 @@ const View: NextPage = () => {
     if (nfts.owner_key) {
       (async () => {
         setLoading(true);
-        setNFTData(nfts.owner_key)
+        await setNFTData(nfts.owner_key)
         setLoading(false);
       })();
     }
@@ -103,7 +118,7 @@ const View: NextPage = () => {
       </div>
       <div className='p-8'>
         <div className='flex flex-wrap'>
-          <button className="bg-gray-400 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border-0 rounded shadow mt-2">
+          <button onClick={onOrderByLastTransactionTime} className="bg-gray-400 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border-0 rounded shadow mt-2">
             Last Transaction Time
           </button>
           <button onClick={onOrderByCreationTime} className="ml-2 bg-gray-400 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 border-0 rounded shadow mt-2">
