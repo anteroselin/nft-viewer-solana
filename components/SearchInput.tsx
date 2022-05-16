@@ -5,7 +5,7 @@ interface ISearchInput {
   onChangeHandler?: (x: string) => void;
   onClickHandler?: () => void;
 }
-
+ 
 const SearchInput: FC<ISearchInput> = ({ onChangeHandler=()=>{}, text="", className="", onClickHandler=()=>{} }) => {
   return (
     <div className={`${className} relative`}>

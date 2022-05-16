@@ -15,6 +15,10 @@ const Home: NextPage = () => {
   const router = useRouter();
   
   const goView = () => {
+    if ( ownerKey === "" ) {
+      alert("Please input owner public key");
+      return;
+    }
     dispatch({
       type: OWNER_PUBLIC_KEY,
       payload: ownerKey
